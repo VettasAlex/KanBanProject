@@ -18,14 +18,15 @@ public class TaskController {
     @GetMapping("/tasks/{id}")
 
     public Task getTask(@PathVariable Long id) {
+        System.out.println("it works"); // Added debug statement
         return taskService.getTask(id);
     }
 
-    @PostMapping("/lists/{listId}/tasks")
+    // @PostMapping("/lists/{listId}/tasks")
 
-    public Task createTask(@PathVariable Long listId, @RequestBody Task task) {
-        return taskService.createTask(listId, task);
+    // public Task createTask(@PathVariable Long listId, @RequestBody Task task) {
+    //     return taskService.createTask(listId, task);
 
-    }
+    // }
 }
 
