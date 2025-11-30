@@ -29,11 +29,13 @@ public class TaskService {
 
     public Task moveTask(Long taskId, Long targetListId) {
         Task task = taskRepository.findById(taskId);
-
+        if (task == null) {
+            throw new IllegalArgumentException("Didn't find any target with id: " + targetListId);
+        }
         ListEntity targetList = listEntityRepository.findById(targetListId);
          if (targetList == null) {
         throw new IllegalArgumentException("Didn't find any target with id: " + targetListId);
-    }
+        }
         
         List<Task> tasksInTargetList = taskRepository.findByListId(targetListId);
 
