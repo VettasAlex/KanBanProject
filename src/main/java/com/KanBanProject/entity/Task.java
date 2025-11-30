@@ -6,5 +6,16 @@ public class Task {
     public String name;
     public String description;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public long getId() {
+        return id;
+    }
 }
 

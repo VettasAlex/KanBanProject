@@ -7,4 +7,17 @@ public class Board {
     public String name;
     public List<ListEntity> lists;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+     public long getId() {
+        return id;
+    }
 }
+
+

@@ -8,6 +8,18 @@ public class ListEntity {
     public String name;
     public List<Task> lists;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+    
+     public long getId() {
+        return id;
+    }
+
 }
 
 
