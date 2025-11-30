@@ -1,8 +1,10 @@
 package com.KanBanProject.controllers;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.KanBanProject.entity.Task;
 import com.KanBanProject.service.TaskService;
@@ -22,11 +24,9 @@ public class TaskController {
         return taskService.getTask(id);
     }
 
-    // @PostMapping("/lists/{listId}/tasks")
-
-    // public Task createTask(@PathVariable Long listId, @RequestBody Task task) {
-    //     return taskService.createTask(listId, task);
-
-    // }
+    @PatchMapping("/tasks/{taskId}move")
+    public Task moveTask(@PathVariable Long taskId, @RequestParam Long targetListId) {
+        taskService.moveTask(taskId, targetListId);
+}
 }
 
