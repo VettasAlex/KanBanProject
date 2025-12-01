@@ -3,7 +3,6 @@ package com.KanBanProject.service;
 import org.springframework.stereotype.Service;
 
 import com.KanBanProject.entity.ListEntity;
-import com.KanBanProject.entity.Task;
 import com.KanBanProject.repository.ListEntityRepository;
 
 @Service
