@@ -30,11 +30,11 @@ public class TaskService {
     public Task moveTask(Long taskId, Long targetListId) {
         Task task = taskRepository.findById(taskId);
         if (task == null) {
-            throw new IllegalArgumentException("Didn't find any target with id: " + targetListId);
+            throw new IllegalArgumentException("Didn't find any task with id: " + taskId);
         }
         ListEntity targetList = listEntityRepository.findById(targetListId);
          if (targetList == null) {
-        throw new IllegalArgumentException("Didn't find any target with id: " + targetListId);
+        throw new IllegalArgumentException("Didn't find any targetlist with id: " + targetListId);
         }
         
         List<Task> tasksInTargetList = taskRepository.findByListId(targetListId);
@@ -47,6 +47,8 @@ public class TaskService {
         }
 
         int nextPos = maxPos + 1;
+        task.setPos(nextPos);
+        
 
         return taskRepository.save(task);
 

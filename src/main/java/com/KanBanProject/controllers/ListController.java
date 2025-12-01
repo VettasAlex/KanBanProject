@@ -24,7 +24,7 @@ public class ListController {
     @GetMapping("/lists/{id}")
 
     public ListEntity getListEntity(@PathVariable Long id) {
-        System.out.println("it works"); // Added debug statement
+        System.out.println("it works"); //  debug statement
         return listService.getListEntity(id);
     }
 

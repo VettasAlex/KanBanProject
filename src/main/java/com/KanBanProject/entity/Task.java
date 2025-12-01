@@ -2,12 +2,14 @@ package com.KanBanProject.entity;
 
 public class Task {
     public long id;
-    public long tasksId;
+    public long listId;
     public String name;
     public String description;
+
+    //for task immigration between lists
     private int position;
     
-        //for task immigration between lists
+        
 
 
 
@@ -22,6 +24,14 @@ public class Task {
     public long getId() {
         return id;
     }
+
+    public long getListId() {
+    return listId;
+}
+
+    public void setListId(long listId) {
+    this.listId = listId;
+}
 
 
     //for task immigration between lists

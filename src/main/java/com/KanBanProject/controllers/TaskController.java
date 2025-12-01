@@ -20,13 +20,13 @@ public class TaskController {
     @GetMapping("/tasks/{id}")
 
     public Task getTask(@PathVariable Long id) {
-        System.out.println("it works"); // Added debug statement
+        System.out.println("it works"); //  debug statement
         return taskService.getTask(id);
     }
 
-    @PatchMapping("/tasks/{taskId}move")
+    @PatchMapping("/tasks/{taskId}/move")
     public Task moveTask(@PathVariable Long taskId, @RequestParam Long targetListId) {
-        taskService.moveTask(taskId, targetListId);
+       return taskService.moveTask(taskId, targetListId);
 }
 }
 

@@ -18,4 +18,5 @@ public class TaskRepository {
 
     public List<Task> findByListId(Long listId) {
         return null; // implement later
+    }
 }

@@ -22,7 +22,7 @@ public class BoardController {
 
     @GetMapping("/boards/{id}")
     public Board getBoard(@PathVariable Long id) {
-        System.out.println("it works"); // Added debug statement
+        System.out.println("it works"); //  debug statement
         return boardService.getBoard(id);
     }
 

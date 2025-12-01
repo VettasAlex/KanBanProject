@@ -6,7 +6,7 @@ public class ListEntity {
     public long id;
     public long boardId;
     public String name;
-    public List<Task> lists;
+    public List<Task> tasks;
 
     public void setName(String name) {
         this.name = name;
