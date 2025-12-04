@@ -19,6 +19,5 @@ public class BoardService {
 public Board createBoard(Board board) {
     // temporary placeholder logic
     return null;
-}
-
+    }
 }

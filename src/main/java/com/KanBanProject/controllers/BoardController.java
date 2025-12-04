@@ -35,6 +35,5 @@ public class BoardController {
     @PostMapping("/boards/{boardId}/lists")
     public ListEntity createList(@PathVariable Long boardId,@RequestBody ListEntity listEntity) {
     return listService.createList(boardId, listEntity);
-}
-    
+    }
 }

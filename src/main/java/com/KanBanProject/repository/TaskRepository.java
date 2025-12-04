@@ -9,7 +9,7 @@ import com.KanBanProject.entity.Task;
 @Repository
 public class TaskRepository {
     public Task findById(Long Id) {
-        return null; // implement later
+        return null; // TODO: implement findById
     }
 
     public Task save(Task task) {
@@ -17,6 +17,6 @@ public class TaskRepository {
     }
 
     public List<Task> findByListId(Long listId) {
-        return null; // implement later
+        return null; // TODO: implement findByListId
     }
 }

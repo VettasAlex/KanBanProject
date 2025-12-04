@@ -25,6 +25,6 @@ public class TaskController {
     @PatchMapping("/tasks/{taskId}/move")
     public Task moveTask(@PathVariable Long taskId, @RequestParam Long targetListId) {
        return taskService.moveTask(taskId, targetListId);
-}
+    }
 }
 

@@ -8,10 +8,6 @@ public class Task {
 
     //for task immigration between lists
     private int position;
-    
-        
-
-
 
     public void setName(String name) {
         this.name = name;
@@ -26,16 +22,15 @@ public class Task {
     }
 
     public long getListId() {
-    return listId;
-}
+        return listId;
+    }
 
     public void setListId(long listId) {
-    this.listId = listId;
-}
-
+        this.listId = listId;
+    }
 
     //for task immigration between lists
-    
+
     public void setPos(int position) {
         this.position = position;
     }
@@ -43,9 +38,6 @@ public class Task {
     public int getPos() {
         return position;
     }
-
-    
-    
 
 }
 

@@ -20,6 +20,5 @@ public class ListService {
     public ListEntity createList(Long boardId, ListEntity listEntity) {
     // temporary placeholder logic
     return null;
-}
-
+    }
 }

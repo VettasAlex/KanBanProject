@@ -8,7 +8,7 @@ import com.KanBanProject.entity.Board;
 public class BoardRepository {
 
     public Board findById(Long Id) {
-        return null; // implement later
+        return null; // TODO: implement findById
     }
     
     public Board save(Board board) {
