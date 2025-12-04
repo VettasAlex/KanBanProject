@@ -21,8 +21,8 @@ public class ListService {
         return listEntity;
     }
 
-    public ListEntity createList(Long boardId, ListEntity listEntity) {
-    // temporary placeholder logic
+    public ListEntity createListEntity(Long boardId, ListEntity listEntity) {
+   // TODO: implement createListEntity
     return null;
     }
 }

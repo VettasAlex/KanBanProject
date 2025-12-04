@@ -22,7 +22,7 @@ public class BoardService {
     }
 
 public Board createBoard(Board board) {
-    // temporary placeholder logic
+    // TODO: implement createBoard
     return null;
     }
 }
