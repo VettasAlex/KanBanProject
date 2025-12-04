@@ -13,7 +13,12 @@ public class BoardService {
     }
     
     public Board getBoard(Long id) {
-        return boardRepository.findById(id);
+        Board board = boardRepository.findById(id);
+        if (board == null) {
+            throw new IllegalArgumentException("Didn't find any board with id: " + id);
+        }
+        
+        return board;
     }
 
 public Board createBoard(Board board) {

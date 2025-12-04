@@ -14,7 +14,11 @@ public class ListService {
     }
 
     public ListEntity getListEntity(Long id) {
-        return listEntityRepository.findById(id);
+        ListEntity listEntity =  listEntityRepository.findById(id);
+        if (listEntity == null) {
+            throw new IllegalArgumentException("There's no List with id: " + id);
+        }
+        return listEntity;
     }
 
     public ListEntity createList(Long boardId, ListEntity listEntity) {

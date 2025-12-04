@@ -19,7 +19,11 @@ public class TaskService {
     }
 
     public Task getTask(Long id) {
-        return taskRepository.findById(id);
+        Task task = taskRepository.findById(id);
+        if (task == null) {
+            throw new IllegalArgumentException("Didn't find any task with id: " + id);
+        }
+        return task;
     }
 
     public Task createTask(Long listId, Task task) {

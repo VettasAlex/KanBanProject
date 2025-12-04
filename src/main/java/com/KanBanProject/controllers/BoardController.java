@@ -21,8 +21,7 @@ public class BoardController {
     }
 
     @GetMapping("/boards/{id}")
-    public Board getBoard(@PathVariable Long id) {
-        System.out.println("it works"); //  debug statement
+    public Board getBoard(@PathVariable Long id) {     
         return boardService.getBoard(id);
     }
 

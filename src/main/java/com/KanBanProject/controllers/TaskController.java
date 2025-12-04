@@ -18,7 +18,6 @@ public class TaskController {
     @GetMapping("/tasks/{id}")
 
     public Task getTask(@PathVariable Long id) {
-        System.out.println("it works"); //  debug statement
         return taskService.getTask(id);
     }
 
