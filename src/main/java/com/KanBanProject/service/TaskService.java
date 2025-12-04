@@ -53,7 +53,6 @@ public class TaskService {
         int nextPosition = maxPosition + 1;
         task.setPosition(nextPosition);
         
-
         return taskRepository.save(task);
     }
 }

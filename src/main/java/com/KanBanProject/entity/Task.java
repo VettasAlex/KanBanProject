@@ -5,9 +5,8 @@ public class Task {
     public long listId;
     public String name;
     public String description;
+    private int position;  //for task immigration between lists
 
-    //for task immigration between lists
-    private int position;
 
     public void setName(String name) {
         this.name = name;
