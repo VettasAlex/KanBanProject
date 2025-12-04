@@ -43,15 +43,15 @@ public class TaskService {
         
         List<Task> tasksInTargetList = taskRepository.findByListId(targetListId);
 
-        int maxPos = -1;
+        int maxPosition = -1;
         for (Task t : tasksInTargetList) {
-            if (t.getPos() > maxPos) {
-                maxPos = t.getPos();
+            if (t.getPosition() > maxPosition) {
+                maxPosition = t.getPosition();
             }
         }
 
-        int nextPos = maxPos + 1;
-        task.setPos(nextPos);
+        int nextPosition = maxPosition + 1;
+        task.setPosition(nextPosition);
         
 
         return taskRepository.save(task);

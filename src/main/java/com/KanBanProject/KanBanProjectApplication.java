@@ -37,8 +37,8 @@ public class KanBanProjectApplication {
 
 				ListEntity toDo = new ListEntity();
 				toDo.setName("To Do");
-				listService.createList(boardId, toDo);
-				ListEntity savedToDo = listService.createList(boardId, toDo);
+				listService.createListEntity(boardId, toDo);
+				ListEntity savedToDo = listService.createListEntity(boardId, toDo);
 
 
 				ListEntity inProgress = new ListEntity();

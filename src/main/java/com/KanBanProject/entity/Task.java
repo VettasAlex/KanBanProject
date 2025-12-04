@@ -31,11 +31,11 @@ public class Task {
 
     //for task immigration between lists
 
-    public void setPos(int position) {
+    public void setPosition(int position) {
         this.position = position;
     }
 
-    public int getPos() {
+    public int getPosition() {
         return position;
     }
 
