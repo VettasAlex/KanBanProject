@@ -21,21 +21,21 @@ Persistence is not implemented yet (no database). Repositories currently use pla
 
 ### Controllers
 - BoardController
-  - GET /boards/{id}
-  - POST /boards
-  - POST /boards/{boardId}/lists
+  - `GET /boards/{id}`
+  - `POST /boards`
+  - `POST /boards/{boardId}/lists`
 
 - ListController
-  - GET /lists/{id}
-  - POST /lists/{listId}/tasks
+  - `GET /lists/{id}`
+  - `POST /lists/{listId}/tasks`
 
 - TaskController
-  - GET /tasks/{id}
+  - `GET /tasks/{id}`
 
 ### Services
-- BoardService
-- ListService
-- TaskService
+- `BoardService`
+- `ListService`
+- `TaskService`
 
 Each service contains placeholder logic and delegates to repositories.
 
@@ -70,7 +70,7 @@ Controller → Service → Repository → Entity
 
 ## ▶️How to Run
 
-mvn spring-boot:run
+`mvn spring-boot:run`
 
 Server runs (by default) on:
 http://localhost:8080
@@ -80,7 +80,7 @@ http://localhost:8080
 ## 📶Example Requests
 
 ### Create a board
-POST /boards
+`POST /boards`
 Content-Type: application/json
 
 {
@@ -88,7 +88,7 @@ Content-Type: application/json
 }
 
 ### Create a list under a board
-POST /boards/1/lists
+`POST /boards/1/lists`
 Content-Type: application/json
 
 {
@@ -96,7 +96,7 @@ Content-Type: application/json
 }
 
 ### Create a task under a list
-POST /lists/5/tasks
+`POST /lists/5/tasks`
 Content-Type: application/json
 
 {
