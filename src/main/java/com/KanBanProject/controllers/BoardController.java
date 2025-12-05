@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.KanBanProject.entity.Board;
 import com.KanBanProject.entity.ListEntity;
 import com.KanBanProject.service.BoardService;
-import com.KanBanProject.service.ListService;
+import com.KanBanProject.service.ListEntityService;
 
 @RestController
 public class BoardController {
 
     private final BoardService boardService;
-    private final ListService listService;
+    private final ListEntityService listService;
 
-    public BoardController(BoardService boardService, ListService listService) {
+    public BoardController(BoardService boardService, ListEntityService listService) {
         this.boardService = boardService;
         this.listService = listService;
     }

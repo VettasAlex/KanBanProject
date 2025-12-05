@@ -9,7 +9,7 @@ import com.KanBanProject.entity.Board;
 import com.KanBanProject.entity.ListEntity;
 import com.KanBanProject.entity.Task;
 import com.KanBanProject.service.BoardService;
-import com.KanBanProject.service.ListService;
+import com.KanBanProject.service.ListEntityService;
 import com.KanBanProject.service.TaskService;
 
 @SpringBootApplication
@@ -21,7 +21,7 @@ public class KanBanProjectApplication {
 
 	//Create my default StarterPack (one Board, 3 Lists and one task) on-run.
 	@Bean
-	CommandLineRunner initDefaultStarterPack(BoardService boardService, ListService listService, TaskService taskservice) {
+	CommandLineRunner initDefaultStarterPack(BoardService boardService, ListEntityService listService, TaskService taskservice) {
 		return new CommandLineRunner() {
 			@Override
 			public void run(String... Args) {

@@ -6,10 +6,10 @@ import com.KanBanProject.entity.ListEntity;
 import com.KanBanProject.repository.ListEntityRepository;
 
 @Service
-public class ListService {
+public class ListEntityService {
     private final ListEntityRepository listEntityRepository;
 
-    public ListService(ListEntityRepository listEntityRepository) {
+    public ListEntityService(ListEntityRepository listEntityRepository) {
         this.listEntityRepository = listEntityRepository;
     }
 

@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.KanBanProject.entity.ListEntity;
 import com.KanBanProject.entity.Task;
-import com.KanBanProject.service.ListService;
+import com.KanBanProject.service.ListEntityService;
 import com.KanBanProject.service.TaskService;
 
 
 @RestController
 public class ListController {
 
-    private final ListService listService;
+    private final ListEntityService listService;
     private final TaskService taskService;
 
-    public ListController(ListService listService, TaskService taskService) {
+    public ListController(ListEntityService listService, TaskService taskService) {
         this.listService = listService;
         this.taskService = taskService;
     }
