@@ -1,20 +1,22 @@
 package com.KanBanProject.entity;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Task {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    public long id;
-    public long listId;
-    public String name;
-    public String description;
-    private int position;  //for task immigration between lists
+    private Long id;
+    private String name;
+    private String description;
+    private int position; //for task immigration between lists
+
+    @ManyToOne
+    private ListEntity listEntity;
 
 
     public void setName(String name) {
@@ -25,16 +27,24 @@ public class Task {
         return name;
     }
 
-    public long getId() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description =  description;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public long getListId() {
-        return listId;
+    public ListEntity getListEntity() {
+        return listEntity;
     }
 
-    public void setListId(long listId) {
-        this.listId = listId;
+    public void setListEntity(ListEntity listEntity) {
+        this.listEntity = listEntity;
     }
 
     //for task immigration between lists
