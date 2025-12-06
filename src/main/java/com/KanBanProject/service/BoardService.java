@@ -24,7 +24,7 @@ public class BoardService {
 public Board createBoard(Board board) {
     if (board.getName() == null){
         throw new IllegalArgumentException("Name's missing");
-    }
+    }// TODO: implement createListEntity
     return null;
     }
 }
