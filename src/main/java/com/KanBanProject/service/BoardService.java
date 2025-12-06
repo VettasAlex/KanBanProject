@@ -22,7 +22,9 @@ public class BoardService {
     }
 
 public Board createBoard(Board board) {
-    // TODO: implement createBoard
+    if (board.getName() == null){
+        throw new IllegalArgumentException("Name's missing");
+    }
     return null;
     }
 }

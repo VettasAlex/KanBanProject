@@ -22,7 +22,9 @@ public class ListEntityService {
     }
 
     public ListEntity createListEntity(Long boardId, ListEntity listEntity) {
-   // TODO: implement createListEntity
+   if (listEntity.getName() == null){
+        throw new IllegalArgumentException("Name's missing");
+    }// TODO: implement createListEntity
     return null;
     }
 }

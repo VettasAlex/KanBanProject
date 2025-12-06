@@ -27,7 +27,9 @@ public class TaskService {
     }
 
     public Task createTask(Long listId, Task task) {
-        // TODO: implement createTask
+        if (task.getName() == null){
+        throw new IllegalArgumentException("Name's missing");
+    }// TODO: implement createTask
         return null;
     }
 
