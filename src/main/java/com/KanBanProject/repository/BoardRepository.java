@@ -27,9 +27,15 @@ public class BoardRepository { //Temporary Repository until JPA
         if (board.getId() == null) {
             board.setId(nextId);
             nextId++;
-        }
-        
-        boards.add(board);
+            boards.add(board);
+        } else {
+            for (int i = 0; i < boards.size(); i++) {
+                if (board.getId().equals(boards.get(i).getId())) {
+                    boards.set(i, board);
+                    break;
+                }
+            }
+        }      
         return board;
     }
 }
