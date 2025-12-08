@@ -21,10 +21,14 @@ public class BoardService {
         return board;
     }
 
-public Board createBoard(Board board) {
-    if (board.getName() == null){
+public Board createBoard(String name) {
+    if (name == null) {
         throw new IllegalArgumentException("Name's missing");
-    }// TODO: implement createListEntity
-    return null;
+    }
+    Board board = new Board();
+    board.setName(name);
+
+    Board saveBoard = boardRepository.save(board);
+    return saveBoard;
     }
 }

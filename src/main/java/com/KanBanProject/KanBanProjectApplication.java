@@ -27,13 +27,9 @@ public class KanBanProjectApplication {
 			public void run(String... Args) {
 				System.out.println("StartUp init running..");
 
-				Board defaultBoard = new Board();
-				defaultBoard.setName("Default Board");
 
-				Board savedBoard = boardService.createBoard(defaultBoard);
+				Board savedBoard = boardService.createBoard("Default Board");
 				Long boardId = savedBoard.getId();
-			
-
 
 				ListEntity toDo = new ListEntity();
 				toDo.setName("To Do");

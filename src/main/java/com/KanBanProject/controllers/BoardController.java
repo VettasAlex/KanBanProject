@@ -27,7 +27,7 @@ public class BoardController {
 
     @PostMapping("/boards")
     public Board createBoard(@RequestBody Board board) {
-        return boardService.createBoard(board);
+        return boardService.createBoard(board.getName());
     }
 
     
