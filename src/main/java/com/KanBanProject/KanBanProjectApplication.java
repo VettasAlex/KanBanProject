@@ -36,15 +36,12 @@ public class KanBanProjectApplication {
 				listService.createListEntity(boardId, toDo);
 				ListEntity savedToDo = listService.createListEntity(boardId, toDo);
 
-
 				ListEntity inProgress = new ListEntity();
 				inProgress.setName("In Progress");
-				// ListEntity savedInProgress = listService.createList(boardId, inProgress);
-
 
 				ListEntity done = new ListEntity();
 				done.setName("Done");
-				// ListEntity savedDone = listService.createList(boardId, done);
+				
 
 				Task task = new Task();
 				task.setName("My Task");
