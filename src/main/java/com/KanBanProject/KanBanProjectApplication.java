@@ -3,6 +3,8 @@ package com.KanBanProject;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.hibernate.autoconfigure.HibernateJpaAutoConfiguration;
+import org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 import com.KanBanProject.entity.Board;
@@ -12,7 +14,14 @@ import com.KanBanProject.service.BoardService;
 import com.KanBanProject.service.ListEntityService;
 import com.KanBanProject.service.TaskService;
 
-@SpringBootApplication
+
+@SpringBootApplication(
+	// Disable auto-configuration for database connection & JPA until implemented
+    exclude = { 
+        DataSourceAutoConfiguration.class,
+        HibernateJpaAutoConfiguration.class
+    }
+)
 public class KanBanProjectApplication {
 
 	public static void main(String[] args) {
