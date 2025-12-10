@@ -28,7 +28,7 @@ public Board createBoard(String name) {
     Board board = new Board();
     board.setName(name);
 
-    Board saveBoard = boardRepository.save(board);
-    return saveBoard;
+    Board savedBoard = boardRepository.save(board);
+    return savedBoard;
     }
 }
