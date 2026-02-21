@@ -37,9 +37,10 @@ public class ListEntityService {
     if (board == null) {
         throw new IllegalArgumentException("Board with id: " + boardId + " doesn't exist");
     }
+
+    listEntity.setBoard(board);
+    board.getLists().add(listEntity);
     
-    
-    // TODO: implement createListEntity
-    return null;
+        return listEntityRepository.save(listEntity);
     }
 }

@@ -1,6 +1,7 @@
 package com.KanBanProject.entity;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ public class Board {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "board")
-    private List<ListEntity> lists;
+    private List<ListEntity> lists = new ArrayList<>();
 
     public void setName(String name) {
         this.name = name;
@@ -32,6 +33,10 @@ public class Board {
     public Long getId() {
         return id;
     }
+
+    public List<ListEntity> getLists() {
+    return lists;
+}
     
     
 }
