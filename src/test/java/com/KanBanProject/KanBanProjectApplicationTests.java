@@ -1,4 +1,4 @@
-package com.example.KanBanProject;
+package com.KanBanProject;
 
 import static org.junit.jupiter.api.Assertions.*;
 
