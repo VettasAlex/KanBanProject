@@ -28,7 +28,7 @@ public class KanBanProjectApplication {
 		SpringApplication.run(KanBanProjectApplication.class, args);
 	}
 
-	//Create my default StarterPack (one Board, 3 Lists and one task) on-run.
+	//Create my default StarterPack (one Board, 3 Lists and 3 tasks, one per list) on-run.
 	@Bean
 	CommandLineRunner initDefaultStarterPack(BoardService boardService, ListEntityService listService, TaskService taskservice) {
 		return new CommandLineRunner() {
@@ -40,21 +40,38 @@ public class KanBanProjectApplication {
 				Board savedBoard = boardService.createBoard("Default Board");
 				Long boardId = savedBoard.getId();
 
+
+				// Create default lists for the board
+
 				ListEntity toDo = new ListEntity();
-				toDo.setName("To Do");
-				listService.createListEntity(boardId, toDo);
+				toDo.setName("Stuff To Do");
+				// listService.createListEntity(boardId, toDo);
 				ListEntity savedToDo = listService.createListEntity(boardId, toDo);
 
 				ListEntity inProgress = new ListEntity();
 				inProgress.setName("In Progress");
+				ListEntity savedInProgress = listService.createListEntity(boardId, inProgress);
 
 				ListEntity done = new ListEntity();
 				done.setName("Done");
-				
+				ListEntity savedDone = listService.createListEntity(boardId, done);
 
-				Task task = new Task();
-				task.setName("My Task");
-				taskservice.createTask(savedToDo.getId(), task);
+
+				// Create tasks in the "To Do" list
+
+				Task task1 = new Task();
+				task1.setName("Write Code");
+				taskservice.createTask(savedDone.getId(), task1);
+
+				Task task2 = new Task();
+				task2.setName("Debug Code");
+				taskservice.createTask(savedInProgress.getId(), task2);
+
+				Task task3 = new Task();
+				task3.setName("Fix Bugs");
+				taskservice.createTask(savedToDo.getId(), task3);
+
+				
 			}
 		};
 	}
