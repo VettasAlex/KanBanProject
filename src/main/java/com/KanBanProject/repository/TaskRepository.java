@@ -47,7 +47,18 @@ public class TaskRepository {
     }
 
     public List<Task> findByListId(Long listId) {
-        return null; // TODO: implement findByListId
+
+        List<Task> tasksInList = new ArrayList<>();
+        if (listId == null) {
+            return new ArrayList<>();
+     }
+        for (Task task : tasks) {
+         if (task.getListEntity() != null && listId.equals(task.getListEntity().getId())) {
+            tasksInList.add(task);
+        }
+    }
+    return tasksInList;
     }
 }
+
 

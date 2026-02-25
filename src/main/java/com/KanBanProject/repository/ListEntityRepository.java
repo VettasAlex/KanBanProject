@@ -22,24 +22,43 @@ private Long nextId = 1L;
         return null;
     }
     
-   public ListEntity save(ListEntity listEntity) {
+    public ListEntity save(ListEntity listEntity) {
 
-    if (listEntity.getId() == null) {
-        listEntity.setId(nextId++);
+        if (listEntity.getId() == null) {
+            listEntity.setId(nextId++);
+            lists.add(listEntity);
+            return listEntity;
+        }
+
+        for (int i = 0; i < lists.size(); i++) {
+            if (lists.get(i).getId().equals(listEntity.getId())) {
+                lists.set(i, listEntity);
+                return listEntity;
+            }
+        }
+
+        // If someone tries to save an entity with an id that doesn't exist in the repo,
+        // we treat it as "new" (or we could throw i guess).
         lists.add(listEntity);
         return listEntity;
     }
+        
 
-    for (int i = 0; i < lists.size(); i++) {
-        if (lists.get(i).getId().equals(listEntity.getId())) {
-            lists.set(i, listEntity);
-            return listEntity;
+   public List<ListEntity> findByBoardId(Long boardId) {
+
+    List<ListEntity> listsInBoard = new ArrayList<>();
+
+    if (boardId == null) {
+        return listsInBoard;
+    }
+
+    for (ListEntity listEntity : lists) { 
+        if (listEntity.getBoard() != null && boardId.equals(listEntity.getBoard().getId())) {
+            listsInBoard.add(listEntity);
         }
     }
 
-    // If someone tries to save an entity with an id that doesn't exist in the repo,
-    // we treat it as "new" (or we could throw i guess).
-    lists.add(listEntity);
-    return listEntity;
-    }
+    return listsInBoard;
 }
+}
+
