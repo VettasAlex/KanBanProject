@@ -10,7 +10,7 @@ import com.KanBanProject.entity.ListEntity;
 public class ListEntityRepository {
 
     private List<ListEntity> lists = new ArrayList<>();
-private Long nextId = 1L;
+    private Long nextId = 1L;
 
     public ListEntity findById(Long Id) {
         for (ListEntity listEntity : lists) {
@@ -21,6 +21,23 @@ private Long nextId = 1L;
         System.out.println("No ListEntity found with ID: " + Id);
         return null;
     }
+    
+    public List<ListEntity> findByBoardId(Long boardId) {
+
+    List<ListEntity> listsInBoard = new ArrayList<>();
+
+    if (boardId == null) {
+        return listsInBoard;
+    }
+
+    for (ListEntity listEntity : lists) { 
+        if (listEntity.getBoard() != null && boardId.equals(listEntity.getBoard().getId())) {
+            listsInBoard.add(listEntity);
+        }
+    }
+
+    return listsInBoard;
+}
     
     public ListEntity save(ListEntity listEntity) {
 
@@ -43,22 +60,5 @@ private Long nextId = 1L;
         return listEntity;
     }
         
-
-   public List<ListEntity> findByBoardId(Long boardId) {
-
-    List<ListEntity> listsInBoard = new ArrayList<>();
-
-    if (boardId == null) {
-        return listsInBoard;
-    }
-
-    for (ListEntity listEntity : lists) { 
-        if (listEntity.getBoard() != null && boardId.equals(listEntity.getBoard().getId())) {
-            listsInBoard.add(listEntity);
-        }
-    }
-
-    return listsInBoard;
-}
 }
 

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.KanBanProject.entity.ListEntity;
 import com.KanBanProject.entity.Task;
 
 @Repository
@@ -25,6 +24,20 @@ public class TaskRepository {
         return null;
     }
 
+    public List<Task> findByListId(Long listId) {
+
+        List<Task> tasksInList = new ArrayList<>();
+        if (listId == null) {
+            return new ArrayList<>();
+     }
+        for (Task task : tasks) {
+         if (task.getListEntity() != null && listId.equals(task.getListEntity().getId())) {
+            tasksInList.add(task);
+        }
+    }
+    return tasksInList;
+    }
+    
     public Task save(Task task) {
 
     if (task.getId() == null) {
@@ -46,19 +59,6 @@ public class TaskRepository {
     return task;
     }
 
-    public List<Task> findByListId(Long listId) {
-
-        List<Task> tasksInList = new ArrayList<>();
-        if (listId == null) {
-            return new ArrayList<>();
-     }
-        for (Task task : tasks) {
-         if (task.getListEntity() != null && listId.equals(task.getListEntity().getId())) {
-            tasksInList.add(task);
-        }
-    }
-    return tasksInList;
-    }
 }
 
 

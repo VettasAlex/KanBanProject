@@ -35,7 +35,9 @@ public class Board {
     }
 
     public List<ListEntity> getLists() {
-    return lists;
+        return lists;
+
+
 }
     
     
