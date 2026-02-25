@@ -27,6 +27,8 @@ public class Task {
         return name;
     }
 
+    
+
     public String getDescription() {
         return description;
     }
@@ -37,6 +39,10 @@ public class Task {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+    this.id = id;
     }
 
     public ListEntity getListEntity() {

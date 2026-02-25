@@ -22,7 +22,6 @@ private Long nextId = 1L;
         return null;
     }
     
-    // Placeholder save method to fix the issue i guess
    public ListEntity save(ListEntity listEntity) {
 
     if (listEntity.getId() == null) {
