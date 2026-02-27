@@ -34,25 +34,26 @@ public class TaskService {
     }
 
     public Task moveTask(Long taskId, Long targetListId) {
-        Task task = taskRepository.findById(taskId);
-        if (task == null) {
-            throw new IllegalArgumentException("Didn't find any task with id: " + taskId);
-        }
-        ListEntity targetList = listEntityRepository.findById(targetListId)
-    .orElseThrow(() -> new IllegalArgumentException("Didn't find any targetlist with id: " + targetListId));
-        
-        List<Task> tasksInTargetList = taskRepository.findByListId(targetListId);
-
-        int maxPosition = -1;
-        for (Task t : tasksInTargetList) {
-            if (t.getPosition() > maxPosition) {
-                maxPosition = t.getPosition();
-            }
-        }
-
-        int nextPosition = maxPosition + 1;
-        task.setPosition(nextPosition);
-        
-        return taskRepository.save(task);
+    Task task = taskRepository.findById(taskId);
+    if (task == null) {
+        throw new IllegalArgumentException("Didn't find any task with id: " + taskId);
     }
+
+    ListEntity targetList = listEntityRepository.findById(targetListId)
+            .orElseThrow(() -> new IllegalArgumentException("Didn't find any targetlist with id: " + targetListId));
+
+    List<Task> tasksInTargetList = taskRepository.findByListId(targetListId);
+
+    int maxPosition = -1;
+    for (Task t : tasksInTargetList) {
+        if (t.getPosition() > maxPosition) {
+            maxPosition = t.getPosition();
+        }
+    }
+
+    int nextPosition = maxPosition + 1;
+    task.setPosition(nextPosition);
+
+    return taskRepository.save(task);
+}
 }
