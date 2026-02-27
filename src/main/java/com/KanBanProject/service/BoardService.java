@@ -15,7 +15,6 @@ public class BoardService {
 
     public Board getBoard(Long id) {
         Board board = boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Didn't find any board with id: " + id));
-
         return board;
     }
 

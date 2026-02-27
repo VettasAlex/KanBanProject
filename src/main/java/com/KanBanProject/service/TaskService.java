@@ -19,12 +19,8 @@ public class TaskService {
     }
 
     public Task getTask(Long id) {
-        Task task = taskRepository.findById(id);
-        if (task == null) {
-            throw new IllegalArgumentException("Didn't find any task with id: " + id);
-        }
-        return task;
-    }
+    return taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Didn't find any task with id: " + id));
+}
 
     public Task createTask(Long listId, Task task) {
         if (task.getName() == null){
@@ -34,13 +30,11 @@ public class TaskService {
     }
 
     public Task moveTask(Long taskId, Long targetListId) {
-    Task task = taskRepository.findById(taskId);
-    if (task == null) {
-        throw new IllegalArgumentException("Didn't find any task with id: " + taskId);
-    }
+    Task task = taskRepository.findById(taskId).orElseThrow(() -> new IllegalArgumentException("Didn't find any task with id: " + taskId));
+        
+    
 
-    ListEntity targetList = listEntityRepository.findById(targetListId)
-            .orElseThrow(() -> new IllegalArgumentException("Didn't find any targetlist with id: " + targetListId));
+    ListEntity targetList = listEntityRepository.findById(targetListId).orElseThrow(() -> new IllegalArgumentException("Didn't find any targetlist with id: " + targetListId));
 
     List<Task> tasksInTargetList = taskRepository.findByListId(targetListId);
 
