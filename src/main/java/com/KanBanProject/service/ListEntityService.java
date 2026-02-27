@@ -18,10 +18,7 @@ public class ListEntityService {
 }
 
     public ListEntity getListEntity(Long id) {
-        ListEntity listEntity =  listEntityRepository.findById(id);
-        if (listEntity == null) {
-            throw new IllegalArgumentException("There's no List with id: " + id);
-        }
+        ListEntity listEntity =  listEntityRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("There's no List with id: " + id));        
         return listEntity;
     }
 
@@ -33,10 +30,8 @@ public class ListEntityService {
         throw new IllegalArgumentException("Name is missing");
     }
 
-    Board board = boardRepository.findById(boardId);
-    if (board == null) {
-        throw new IllegalArgumentException("Board with id: " + boardId + " doesn't exist");
-    }
+    Board board = boardRepository.findById(boardId).orElseThrow(() -> new IllegalArgumentException("Board with id: " + boardId + " doesn't exist"));
+    
 
     listEntity.setBoard(board);
     board.getLists().add(listEntity);

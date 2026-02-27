@@ -1,64 +1,62 @@
 package com.KanBanProject.repository;
 
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
+
 import org.springframework.stereotype.Repository;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.KanBanProject.entity.ListEntity;
 
 @Repository
 public class ListEntityRepository {
 
-    private List<ListEntity> lists = new ArrayList<>();
-    private Long nextId = 1L;
+    // In-memory storage (acts like a fake db table)
+    private final Map<Long, ListEntity> store = new ConcurrentHashMap<>();
 
-    public ListEntity findById(Long Id) {
-        for (ListEntity listEntity : lists) {
-            if (listEntity.getId() != null && listEntity.getId().equals(Id)) {
-                return listEntity;
-            }
-        }
-        System.out.println("No ListEntity found with ID: " + Id);
-        return null;
-    }
-    
-    public List<ListEntity> findByBoardId(Long boardId) {
+    // Thread-safe id counter (like auto-increment in db)
+    private final AtomicLong idGen = new AtomicLong(0);
 
-    List<ListEntity> listsInBoard = new ArrayList<>();
-
-    if (boardId == null) {
-        return listsInBoard;
-    }
-
-    for (ListEntity listEntity : lists) { 
-        if (listEntity.getBoard() != null && boardId.equals(listEntity.getBoard().getId())) {
-            listsInBoard.add(listEntity);
-        }
-    }
-
-    return listsInBoard;
-}
-    
     public ListEntity save(ListEntity listEntity) {
 
+        // Generate id if new
         if (listEntity.getId() == null) {
-            listEntity.setId(nextId++);
-            lists.add(listEntity);
-            return listEntity;
+            listEntity.setId(idGen.incrementAndGet());
         }
 
-        for (int i = 0; i < lists.size(); i++) {
-            if (lists.get(i).getId().equals(listEntity.getId())) {
-                lists.set(i, listEntity);
-                return listEntity;
+        store.put(listEntity.getId(), listEntity);
+        return listEntity;
+    }
+
+    public Optional<ListEntity> findById(Long id) {
+        return Optional.ofNullable(store.get(id));
+    }
+
+    public List<ListEntity> findAll() {
+        return new ArrayList<>(store.values());
+    }
+
+    public boolean existsById(Long id) {
+        return store.containsKey(id);
+    }
+
+    public void deleteById(Long id) {
+        store.remove(id);
+    }
+
+    // Helper for getting lists under a board
+    public List<ListEntity> findByBoardId(Long boardId) {
+        List<ListEntity> result = new ArrayList<>();
+
+        for (ListEntity listEntity : store.values()) {
+            if (listEntity.getBoard() != null
+                    && listEntity.getBoard().getId() != null
+                    && listEntity.getBoard().getId().equals(boardId)) {
+
+                result.add(listEntity);
             }
         }
 
-        // If someone tries to save an entity with an id that doesn't exist in the repo,
-        // we treat it as "new" (or we could throw i guess).
-        lists.add(listEntity);
-        return listEntity;
+        return result;
     }
-        
 }
-

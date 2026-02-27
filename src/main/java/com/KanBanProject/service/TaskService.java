@@ -38,10 +38,8 @@ public class TaskService {
         if (task == null) {
             throw new IllegalArgumentException("Didn't find any task with id: " + taskId);
         }
-        ListEntity targetList = listEntityRepository.findById(targetListId);
-         if (targetList == null) {
-        throw new IllegalArgumentException("Didn't find any targetlist with id: " + targetListId);
-        }
+        ListEntity targetList = listEntityRepository.findById(targetListId)
+    .orElseThrow(() -> new IllegalArgumentException("Didn't find any targetlist with id: " + targetListId));
         
         List<Task> tasksInTargetList = taskRepository.findByListId(targetListId);
 
