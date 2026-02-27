@@ -1,5 +1,7 @@
 package com.KanBanProject.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +18,7 @@ public class Task {
     private int position; //for task immigration between lists
 
     @ManyToOne
+    @JsonBackReference("list-tasks")
     private ListEntity listEntity;
 
 

@@ -23,11 +23,27 @@ public class TaskService {
 }
 
     public Task createTask(Long listId, Task task) {
-        if (task.getName() == null){
+    if (task == null || task.getName() == null || task.getName().trim().isEmpty()) {
         throw new IllegalArgumentException("Name's missing");
-    }// TODO: implement createTask
-        return null;
     }
+
+    ListEntity list = listEntityRepository.findById(listId)
+            .orElseThrow(() -> new IllegalArgumentException("Didn't find any list with id: " + listId));
+
+    task.setListEntity(list);
+    list.getTasks().add(task);
+
+    List<Task> tasksInList = taskRepository.findByListId(listId);
+    int maxPosition = -1;
+    for (Task t : tasksInList) {
+        if (t.getPosition() > maxPosition) {
+            maxPosition = t.getPosition();
+        }
+    }
+    task.setPosition(maxPosition + 1);
+
+    return taskRepository.save(task);
+}
 
     public Task moveTask(Long taskId, Long targetListId) {
     Task task = taskRepository.findById(taskId).orElseThrow(() -> new IllegalArgumentException("Didn't find any task with id: " + taskId));
@@ -35,7 +51,8 @@ public class TaskService {
     
 
     ListEntity targetList = listEntityRepository.findById(targetListId).orElseThrow(() -> new IllegalArgumentException("Didn't find any targetlist with id: " + targetListId));
-
+    task.setListEntity(targetList);
+        
     List<Task> tasksInTargetList = taskRepository.findByListId(targetListId);
 
     int maxPosition = -1;

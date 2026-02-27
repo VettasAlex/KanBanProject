@@ -9,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class ListEntity {
@@ -17,9 +19,11 @@ public class ListEntity {
     private Long id;
     private String name;
     @ManyToOne
+    @JsonBackReference("board-lists")
     private Board board;
 
     @OneToMany(mappedBy = "listEntity")
+    @JsonManagedReference("list-tasks")
     private List<Task> tasks = new ArrayList<>();
 
     public void setName(String name) {

@@ -1,6 +1,9 @@
 package com.KanBanProject.entity;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.ArrayList;
 
 import jakarta.persistence.Entity;
@@ -16,7 +19,8 @@ public class Board {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "board")
-    private List<ListEntity> lists = new ArrayList<>();
+@JsonManagedReference("board-lists")
+private List<ListEntity> lists = new ArrayList<>();
 
     public void setName(String name) {
         this.name = name;
